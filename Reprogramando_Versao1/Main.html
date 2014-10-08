@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<style> 
+#myDIV {
+    width: 500px;
+    height: 500px;
+    background-color: lightblue;
+}
+</style>
+</head>
+ 
+
+
+<center>
+<canvas id="myCanvas" width="1024" height="768" style="border:4px solid">
+ <div id="myCanvas">
+  <h3>Mouse over me, and check out the mouse-cursor.</h3>
+</div>
+<script src="Scripts/Graphics.js"></script>
+<script src="Scripts/CollisionManager.js"></script>
+<script src="Scripts/Background.js"></script>
+<script src="Scripts/Animation.js"></script>
+<script src="Scripts/Menu.js"></script>
+<script src="Scripts/Object.js"></script>
+<script src="Scripts/Icon.js"></script>
+<script src="Scripts/Button.js"></script>
+<script src="Scripts/Sun.js"></script>
+<script src="Scripts/Cloud.js"></script>
+<script src="Scripts/BlankRect.js"></script>
+<script src="Scripts/Fade.js"></script>
+<script src="Scripts/Game.js"></script>
+<script src="Scripts/Lose.js"></script>
+<script src="Scripts/Win.js"></script>
+<script src="Scripts/Credit.js"></script>
+<script src="Scripts/Introduction.js"></script>
+<script src="Scripts/Instruction.js"></script>
+<script src="Scripts/Clock.js"></script>
+<script src="Scripts/Word.js"></script>
+<script src="Scripts/Trash.js"></script>
+<script src="Scripts/SceneManager.js"></script>
+<script src="Scripts/MouseManager.js"></script>
+
+
+<script>
+var current;
+var start = (new Date()).getTime();
+var updateTime = 25;
+
+function deltaTime()
+{
+	current = (new Date()).getTime();
+	elapsed = current - start;
+	start = current;
+	var delta = elapsed / 1000.;		
+	return delta;
+}
+	
+function Update()
+{
+	if(sceneManager.currentScene == "animation")
+	updateTime = 35;
+	else
+	updateTime = 25;
+	
+	sceneManager.draw();
+	sceneManager.update();
+	setTimeout(Update,updateTime);
+}
+
+function myFunction() 
+{
+    document.getElementById("myCanvas").style.cursor = "url(Images/Mouse/Mao_Fechada.gif),url(Images/Mouse/Mao_Fechada.ico),auto"
+}
+myFunction();
+
+Update();
+
+
+</script>
+
+</body>
+</html>
